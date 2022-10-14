@@ -1,4 +1,4 @@
-import { Route, NavLink } from 'react-router-dom'
+import { Route, NavLink, Navigate } from 'react-router-dom'
 import Welcome from './pages/Welcome';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail'
@@ -12,9 +12,10 @@ function App() {
         <li><NavLink to='/products'>Products</NavLink></li>
       </ul>
       <Routes>
-        <Route path='/welcome' element={<Welcome/>} /> 
+        <Route path='/' element={<Navigate to="/welcome"/>} />
+        <Route path='/welcome/*' element={<Welcome/>} /> 
         <Route path='/products' element={<Products/>} /> 
-        <Route path='/product-detail/:productId' element={<ProductDetail/>} />
+        <Route path='/products/:productId' element={<ProductDetail/>} />
       </Routes>
     </div>
   );

@@ -5,8 +5,8 @@ function Products() {
         <div>
             <h1>Products component text</h1>
             <ul>
-                <Link to={'/product-detail/1'}>Product 1</Link>
-                <Link to={'/product-detail/2'}>Product 2</Link>
+                <Link to={'/products/1'}>Product 1</Link>
+                <Link to={'/products/2'}>Product 2</Link>
             </ul>
         </div>
     )
