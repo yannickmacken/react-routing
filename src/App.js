@@ -2,6 +2,7 @@ import { Route, NavLink, Navigate } from 'react-router-dom'
 import Welcome from './pages/Welcome';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail'
+import NotFound from './pages/NotFound'
 import { Routes } from 'react-router-dom';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/welcome/*' element={<Welcome/>} /> 
         <Route path='/products' element={<Products/>} /> 
         <Route path='/products/:productId' element={<ProductDetail/>} />
+        <Route path='*' element={<NotFound/>} />
       </Routes>
     </div>
   );
