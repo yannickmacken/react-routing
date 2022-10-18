@@ -22,7 +22,6 @@ function Products() {
             setProducts(a => a.sort().reverse())
         }
     } 
-    console.log(products)
 
     // Dynamically build sorted link list
     let links = []

@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
       <ul>
-        <li><NavLink to='/welcome'>Welcome</NavLink></li>
+        <li><NavLink className={(navData) => navData.isActive ? 'active-class' : 'unactive-class' } to='/welcome'>Welcome</NavLink></li>
         <li><NavLink to='/products'>Products</NavLink></li>
       </ul>
       <Routes>
