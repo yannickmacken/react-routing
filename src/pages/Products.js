@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, useLoaderData, Link } from 'react-router-dom'
 import { useState } from 'react'
 
 function Products() {
+
+    const loaderData = useLoaderData()
     let navigate = useNavigate()
     const location = useLocation()
     const [ products, setProducts] = useState([ '/products/1', '/products/2' ])
+
+    console.log(loaderData)
 
     // Get current URL query params
     const queryParams = new URLSearchParams(location.search)

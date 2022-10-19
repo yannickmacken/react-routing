@@ -4,6 +4,7 @@ import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail'
 import NotFound from './pages/NotFound'
 import { Routes } from 'react-router-dom';
+import getProducts from './util/api'
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Navigate to="/welcome"/>} />
         <Route path='/welcome/*' element={<Welcome/>} /> 
-        <Route path='/products' element={<Products/>} /> 
+        <Route path='/products' element={<Products/>} loader={getProducts}/> 
         <Route path='/products/:productId' element={<ProductDetail/>} />
         <Route path='*' element={<NotFound/>} />
       </Routes>
