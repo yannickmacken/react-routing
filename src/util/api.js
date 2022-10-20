@@ -1,9 +1,18 @@
 async function getProducts() {
-    const response = await fetch('https://react-products-database-default-rtdb.europe-west1.firebasedatabase.app/')
+    const response = await fetch(
+      'https://react-movie-database-1311e-default-rtdb.europe-west1.firebasedatabase.app/movies.json', 
+      {
+        method: "GET",
+        headers: {
+          'Content-type': 'application/json'
+        }
+      })
     if (!response.ok) {
-        throw { message: 'Failed to fetch products', status: 500 }
+      throw new Error('Something went wrong!')
     }
-    return response.json
+
+    const data = await response.json()
+    return data
 }
 
 export default getProducts

@@ -1,5 +1,6 @@
 import { useNavigate, useLocation, useLoaderData, Link } from 'react-router-dom'
 import { useState } from 'react'
+import getProducts from '../util/api'
 
 function Products() {
 
@@ -8,7 +9,7 @@ function Products() {
     const location = useLocation()
     const [ products, setProducts] = useState([ '/products/1', '/products/2' ])
 
-    console.log(loaderData)
+    console.log('loaderdata', loaderData)
 
     // Get current URL query params
     const queryParams = new URLSearchParams(location.search)
@@ -45,4 +46,9 @@ function Products() {
     )
 }
 
+function productLoader() {
+    return getProducts()
+}
+
 export default Products
+export {productLoader}
