@@ -1,5 +1,5 @@
-import { useNavigate, useLocation, useLoaderData, Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useNavigate, useLocation, useLoaderData, Link, Await, defer } from 'react-router-dom'
+import { Suspense, useState } from 'react'
 import getProducts from '../util/api'
 
 function Products() {
@@ -8,8 +8,6 @@ function Products() {
     let navigate = useNavigate()
     const location = useLocation()
     const [ products, setProducts] = useState([ '/products/1', '/products/2' ])
-
-    console.log('loaderdata', loaderData)
 
     // Get current URL query params
     const queryParams = new URLSearchParams(location.search)
@@ -39,15 +37,20 @@ function Products() {
             <br/>
             <button onClick={onClickHandler}>Sort</button>
             <br/>
-            <ul>
-            {links}
-            </ul>
+            <Suspense fallback={<p>loading...</p>}>
+            <Await 
+                resolve={loaderData.posts} 
+                errorElement={<p>error loading content.</p>}
+            >
+                {(loaderData) => <p>loaded.</p>}
+            </Await>
+            </Suspense>
         </div>
     )
 }
 
 function productLoader() {
-    return getProducts()
+    return defer({ posts: getProducts()})
 }
 
 export default Products
