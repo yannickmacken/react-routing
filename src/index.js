@@ -5,19 +5,31 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import Welcome, { welcomeLoader } from "./pages/Welcome";
-import Products, { productLoader } from "./pages/Products";
+import { welcomeLoader } from "./pages/Welcome";
+import { productLoader } from "./pages/Products";
 import NotFound from "./pages/NotFound";
+
+const Products = React.lazy(() => import('./pages/Products'))
+const Welcome = React.lazy(() => import('./pages/Welcome'))
+
 
 
 const router = createBrowserRouter([
   {
     path: "/*",
-    element: <Welcome />,
+    element: (
+      <React.Suspense fallback={<p>loading...</p>}>
+      <Welcome />
+      </React.Suspense>
+    ),
     children: [
       {
         path: "products",
-        element: <Products />,
+        element: (
+          <React.Suspense fallback={<p>loading...</p>}>
+            <Products />
+          </React.Suspense>
+        ),
         loader: productLoader,
       },
     ],
