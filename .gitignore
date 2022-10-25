@@ -1,5 +1,11 @@
-# Created by https://www.toptal.com/developers/gitignore/api/react
-# Edit at https://www.toptal.com/developers/gitignore?templates=react
+### Firebase ###
+.idea
+**/node_modules/*
+**/.firebaserc
+
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/
 
 ### react ###
 .DS_*
@@ -7,6 +13,7 @@
 logs
 **/*.backup.*
 **/*.back.*
+build
 
 node_modules
 bower_components
@@ -17,5 +24,3 @@ bower_components
 psd
 thumb
 sketch
-
-# End of https://www.toptal.com/developers/gitignore/api/react
